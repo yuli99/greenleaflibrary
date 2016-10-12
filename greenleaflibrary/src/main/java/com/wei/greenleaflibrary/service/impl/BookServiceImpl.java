@@ -33,10 +33,10 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public void saveCoverImage(Book book, InputStream inputStream)
-			throws Exception {	
-		File directory = new File("workspace/greenleaflibrary/src/main/webapp/resources/bookcovers");
+			throws Exception {
+		String directory = "F:/Java_Yuli/Git-repositories/Git_library/greenleaflibrary/src/main/webapp/resources/bookcovers";
 		String imageName = book.getBarcode() + ".jpg";
-		File file = new File(directory.getAbsolutePath(), imageName);
+		File file = new File(directory, imageName);
 		Files.copy(inputStream, file.toPath());
 		
 		book.setImageUri(imageName);
@@ -51,8 +51,8 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public void removeBook(Book book) throws Exception {
 		if (!book.getImageUri().equalsIgnoreCase("nocover.jpg")) {
-			File directory = new File("workspace/greenleaflibrary/src/main/webapp/resources/bookcovers");
-			File file = new File(directory.getAbsolutePath(), book.getImageUri());
+			String directory = "F:/Java_Yuli/Git-repositories/Git_library/greenleaflibrary/src/main/webapp/resources/bookcovers";
+			File file = new File(directory, book.getImageUri());
 			Path path = file.toPath();
         
 			if(Files.exists(path)) {
