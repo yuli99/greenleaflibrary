@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"  template="templates/template.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="Library Lending Records" />
+	</ui:define>
+
+	<ui:define name="buttons">
+		<ui:include src="templates/logoutButton.xhtml" />
+	</ui:define>
+
+	<ui:define name="content">
+		<p:fieldset styleClass="mainfield">
+			<h2 style="color: green"><i>Library Lending Records</i></h2>
+			<p:dataTable id="recordList" var="record" value="#{lendingManage.records}">
+				<p:column headerText="Book Barcode" style="width: 120px">
+					<h:outputText value="#{record.book.barcode}"  />
+				</p:column>
+				<p:column headerText="Book Title" style="width: 360px">
+					<h:outputText value="#{record.book.title}" />
+				</p:column>
+				<p:column headerText="Card Number" style="width: 120px">
+					<h:outputText value="#{record.user.cardNumber}" />
+				</p:column>
+				<p:column headerText="Issue Date" style="width: 100px">
+					<h:outputText value="#{record.issueDate}">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Return Date" style="width: 100px">
+					<h:outputText value="#{record.returnDate}">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</h:outputText>
+				</p:column>
+			</p:dataTable>
+		</p:fieldset>
+	</ui:define>
+	
+	<ui:define name="links">
+		<ui:include src="templates/adminHomeLink.xhtml" />
+	</ui:define>
+</ui:composition>

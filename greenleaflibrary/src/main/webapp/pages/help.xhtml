@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"  template="templates/template.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="Library Help Center" />
+	</ui:define>
+
+	<ui:define name="buttons">
+		<ui:include src="templates/loginButton.xhtml" />
+	</ui:define>
+
+	<ui:define name="content">
+		<p:fieldset styleClass="mainfield">
+			<p:fieldset styleClass="about">
+				<h2>FAQ</h2>
+				<h3>How can I get a library card?</h3>
+				<h:outputText
+					value="You may get a library card by providing your picture ID, 
+					proof of address and a completed application. Applications are 
+					located at the circulation desk. Cards for children under 18 will 
+					require a form of child identification, which may be a Social Security 
+					Card, school ID, insurance card or birth certificate." />
+				<h3>How can I borrow and books?</h3>
+				<h:outputText 
+					value="To borrow books from the library, you'll need to take them 
+					with your library card to the circulation desk, and the staff will 
+					check them out to you.  " />
+				<h3>How many and how long can I check books out for?</h3>
+				<h:outputText 
+					value="Maximum of six books for each library card and up to 30 days 
+					for each book." />
+				<h3>Can I use the computer at the library?</h3>
+				<h:outputText 
+					value="Yes! Our library has computers for you to use as well as 
+					free wifi if you prefer to bring your own computer, tablet, or smartphone. 
+					You'll need your library card number to log on to one of our computers. 
+					If you want to use the wifi, you can just come in and connect." />
+				<h3>Can I print or make copies at the library?</h3>
+				<h:outputText 
+					value="Yes! Printing is 20 cents per page and in black and white only. 
+					Make copies on our copy machine is 15 cents per page." />
+				<h3>Can I fax documents at the library?</h3>
+				<h:outputText value="No, we do not have a public fax machine." />
+			</p:fieldset>
+		</p:fieldset>
+	</ui:define>
+
+	<ui:define name="links">
+		<ui:include src="templates/footerLinks.xhtml" />
+	</ui:define>
+</ui:composition>

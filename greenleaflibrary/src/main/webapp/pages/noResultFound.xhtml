@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"  template="templates/template.xhtml">	
+			
+	<ui:define name="title">
+		<h:outputText value="No Result Found" />
+	</ui:define>
+
+	<ui:define name="buttons">
+		<ui:include src="templates/loginButton.xhtml" />
+	</ui:define>
+
+	<ui:define name="content">
+		<p:fieldset styleClass="mainfield">
+			<h:form id="searchForm">
+				<h:panelGrid style="margin: 10px auto" cellspacing="8" columns="5">
+					<h:outputLabel value="Search the Catalog " style="font-size: 18px; font-weight: bold" />
+					<h:inputText value="#{bookSearch.inputText}" style="font-size: 18px" />
+					<p:commandButton id="keyword" value="Keyword" action="#{bookSearch.byKeyword}" ajax="false" />
+					<p:commandButton id="title" value="Title" action="#{bookSearch.byTitle}" ajax="false" />
+					<p:commandButton id="author" value="Author" action="#{bookSearch.byAuthor}" ajax="false" />
+				</h:panelGrid>
+			</h:form>
+			<br />	
+			<p:fieldset styleClass="noResultField">
+				<h:outputLabel value='Sorry, no result found for input text: "#{bookSearch.inputText}"' />
+				<br />
+				<br />
+				<h:outputLabel value="Please try other words ..." />
+			</p:fieldset>
+		</p:fieldset>
+	</ui:define>
+
+	<ui:define name="links">
+		<ui:include src="templates/footerLinks.xhtml" />
+	</ui:define>
+
+</ui:composition>

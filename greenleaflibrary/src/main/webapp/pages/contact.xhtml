@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"  template="templates/template.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="Contact Library" />
+	</ui:define>
+
+	<ui:define name="buttons">
+		<ui:include src="templates/loginButton.xhtml" />
+	</ui:define>
+
+	<ui:define name="content">
+		<p:fieldset id="main" styleClass="mainfield">
+			<p:fieldset styleClass="about">
+				<h2>Contact</h2>
+				<h4>Call us</h4>
+				<h:outputText value="Circulation Desk:  (123) 456-7890" />
+				<h:outputText value="Administrative Services:  (123) 456-0987" />
+				<br />
+				<h4>Email us</h4>
+				<h:outputText value="General Information:  libinfo@greenleaf.org" />
+				<h:outputText value="Administrative Services:  libadmin@greenleaf.org" />				
+					<br />
+				<h4>Mailing address</h4>
+				<h:outputText value="Green Leaf Library, P.O. Box 200330, Tampa, Florida 33665" />
+				<br />
+				<h4>Shipping address</h4>
+				<h:outputText value="Green Leaf Library, 1234 water maple street, Tampa, Florida 33666" />
+		  	</p:fieldset> 
+		</p:fieldset>
+	</ui:define>
+
+	<ui:define name="links">
+		<ui:include src="templates/footerLinks.xhtml" />
+	</ui:define>
+</ui:composition>

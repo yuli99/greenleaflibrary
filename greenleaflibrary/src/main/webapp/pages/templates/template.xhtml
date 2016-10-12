@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<f:view contentType="text/html">
+
+	<ui:insert name="metadata" />	
+
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title><ui:insert name="title" /></title>
+	
+		<link rel="stylesheet" media="screen" href="../resources/css/screen.css"
+			type="text/css" />
+		<link rel="stylesheet" media="print" href="../resources/css/print.css"
+			type="text/css" />
+		<link rel="stylesheet" media="(max-width: 800px)" href="../resources/css/print.css"
+			type="text/css" />
+					
+		<link rel="shortcut icon" href="../resources/images/favicon.ico" />
+	</h:head>
+	
+	<h:body>
+		<div id="container">
+			<div id="header">	
+				<ui:include src="header.xhtml" />
+			</div>
+			
+			<div id="content">
+				<div id="line" />
+				<ui:insert name="content" />
+			</div>
+			
+			<div id="footer">
+				<ui:insert name="links" />
+				<ui:include src="copyright.xhtml" />
+			</div>
+			
+			<div class="printonly">
+				<br/>
+				<p:outputLabel value="Printed from GreenLeafLibrary.org" style="font-size:12px"/>
+			</div>
+		</div>
+	</h:body>
+</f:view>
+</html>

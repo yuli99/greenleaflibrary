@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"  template="templates/template.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="About Library" />
+	</ui:define>
+
+	<ui:define name="buttons">
+		<ui:include src="templates/loginButton.xhtml" />
+	</ui:define>
+
+	<ui:define name="content">
+		<p:fieldset styleClass="mainfield">
+			<p:fieldset styleClass="about">
+				<h2>About</h2>
+				<h:panelGrid columns="2" cellpadding="20">
+					<p:graphicImage url="../resources/images/library.jpg" height="150" />
+					<h:outputText
+						value="Located on 1234 water maple street in North Tampa, the 22,000 square feet Green 
+						Leaf Library provides welcoming environments, a broad range of both print and non-print 
+						materials, and highly qualified, customer-focused employees to engender a lifelong love 
+						of reading and learning for our users." style="font-size: 14px; font-style: italic"/>
+				</h:panelGrid>
+				<br />
+				<h3>Mission</h3>
+				<h:outputText
+					value="Our library provides free resources that inspire reading, guide learning, and encourage 
+					individual exploration. It also strives to broaden the horizons of users, promote intellectual 
+					freedom, and provide for an enhanced quality of life." />
+				<h3>History</h3>
+				<h:outputText
+					value="The Green leaf Library opened on January 1, 1995 in a 3500 square foot building. 
+					It was expanded to 6,000 square feet in 2005. A groundbreaking was held for the new 
+					building on January, 2011." />
+				<h3>Service</h3>
+				<h:outputText
+					value="Open six days a week, the library houses a comprehensive circulating collection 
+					in multiple formats and a wide variety of programs and services. In addition to a large 
+					community room, three smaller meeting rooms are available for programs, meetings, quiet 
+					study and literacy tutoring. They are available on a first-come, first-serve basis by 
+					signing up at the Circulation Desk." />
+			</p:fieldset>
+		</p:fieldset>
+	</ui:define>
+
+	<ui:define name="links">
+		<ui:include src="templates/footerLinks.xhtml" />
+	</ui:define>
+</ui:composition>

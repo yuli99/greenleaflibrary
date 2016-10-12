@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"  template="templates/template.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="Library Books" />
+	</ui:define>
+
+	<ui:define name="buttons">
+		<ui:include src="templates/logoutButton.xhtml" />
+	</ui:define>
+
+	<ui:define name="content">
+		<p:fieldset styleClass="mainfield">
+			<h2 style="color: green"><i>Library Books</i></h2>
+			<p:dataTable id="bookList" var="book" value="#{bookManage.books}">
+				<p:column headerText="Barcode" style="width: 120px" >
+					<h:outputText value="#{book.barcode}" />
+				</p:column>
+				<p:column headerText="Title" style="width:400px">
+					<h:outputText value="#{book.title}" />
+				</p:column>
+				<p:column headerText="Edition" style="width:80px">
+					<h:outputText value="#{book.edition}" />
+				</p:column>
+				<p:column headerText="Authors" style="width:210px">
+					<h:outputText value="#{book.authors}" style="width:220px"/>
+				</p:column>
+			</p:dataTable>
+		</p:fieldset>
+	</ui:define>
+	
+	<ui:define name="links">
+		<ui:include src="templates/adminHomeLink.xhtml" />
+	</ui:define>
+</ui:composition>

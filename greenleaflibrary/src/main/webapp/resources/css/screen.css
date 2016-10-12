@@ -1,0 +1,211 @@
+#container {
+	width: 100%;
+	min-height: 600px;
+	text-align: center;
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	font-style: normal;
+	font-smooth: always;
+}
+
+#header {
+	height: 50px;
+	width: 100%;
+    position: relative;
+    top: -5px; 
+}
+
+#line  {
+	width: 70%;
+	margin: 5px auto;
+	height: 5px;
+	background: #a0fd93;
+}
+
+#content {
+	width: 100%;
+	position: relative;
+	top: 120px;
+}
+
+#footer {
+	height: 50px;
+	width: 100%;
+	position: relative;
+	bottom: -140px;
+}
+
+.copyright {
+	width: 70%;
+	margin: -5px auto;
+	border: 0;
+	text-align: left !important;
+	font-style: italic;
+}
+
+.printonly {
+	display:none;
+}
+
+.topfield {
+	height: 28px;
+	width: 100%;
+	margin: 0 auto 0;
+	background: green;
+    border: 0;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+	text-shadow: 2px 2px 2px #333333;
+}
+
+.logofield {
+	width: 70%;
+	min-width: 600px;
+	margin: 0 auto;
+	border: 0;
+}
+
+.logoLayout {
+	width: 92%;
+	margin: -10px auto 0;
+	border: 0; 
+}
+
+.sloganText {
+	font-size: 16px; 
+    font-style: italic;
+	color: #FF8C00
+}
+
+.buttonfield {
+	width: 80%;
+	margin: 5px auto;
+	text-align: right;
+	border: 0;
+}
+
+.mainfield {
+	width: 70%;
+	margin: 0 auto;
+	border: 0;
+}
+
+.linksfield {
+	width: 70%;
+	margin: 0 auto;
+	font-size: 16px;
+	border: 0;
+}
+
+.mainLayout {
+	width: 98%;
+	height: 290px; 
+	margin: 0 auto;
+	border: 0; 
+}
+
+.ui-layout-unit {
+	border: 0;
+	background: none;
+}
+
+.ui-layout-unit-content {
+	border: 0;
+	background: none;
+}
+
+.overview {
+	width: 89%;
+	margin: 0 20px;
+	text-align: left;
+	border: 0;
+}
+
+.eastfield {
+	width: 80%;
+	margin: -10px auto;
+	text-align: left;
+	border: 0;
+}
+
+.about {
+	width: 90%;
+	margin: 0 auto;
+	text-align: left;
+	border: 0;
+}
+
+.noResultField {
+	width: 90%;
+	height: 200px;
+	margin: 0 auto;
+	text-align: left;
+	font-size: 18px !important;
+	font-style: italic;
+	font-weight: bold;
+	border: 0;
+}
+
+.loginfield {
+    margin: 50px auto 40px;
+	width: 36%;
+	background: url(../images/blue.png) -10px -10px no-repeat;
+	border: 0;
+	box-shadow: 2px 2px 10px #888;
+	text-align: center;
+}
+
+.loginPanel {
+	margin: 20px auto 20px; 
+	text-align: right;
+}
+
+.adminPanel {
+	background: url(../images/orange.png) -10px -10px no-repeat;
+	width: 80%;
+	margin: 20px auto 30px;
+	box-shadow: 2px 2px 10px #888;
+	text-align: left;
+	border: 0;
+}
+
+.adminText {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.ui-dialog-titlebar {
+    background-color: #008000 !important;
+    color: white !important;
+    font-size: 12px !important;
+    text-shadow:1px 1px 1px #333333 !important;
+}
+
+.ui-widget-overlay {
+    background: none !important;
+}
+
+.ui-password-panel {
+    font-size: 12px;
+}
+
+.ui-message-error, .ui-message-info {
+    position: absolute !important; 
+    margin-top: -10px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.infofield {
+    margin: 20px auto 10px;
+	width: 50%;
+	background: url(../images/green.png) -10px -10px no-repeat;
+	border: 0;
+	box-shadow: 2px 2px 10px #888;
+	text-align: center;
+}
+
+
+
+

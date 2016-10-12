@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+    <context:annotation-config/>
+    
+	<import resource="datasource-config.xml" />
+	<import resource="security-config.xml" />
+	
+	<!-- DAO declarations -->
+	<bean id="userDao" class="com.wei.greenleaflibrary.dao.UserJpaDao" />
+	<bean id="bookDao" class="com.wei.greenleaflibrary.dao.BookJpaDao" />
+	<bean id="lendingRecordDao" class="com.wei.greenleaflibrary.dao.LendingRecordJpaDao" />
+	<bean id="ratingDao" class="com.wei.greenleaflibrary.dao.RatingJpaDao" />
+	<bean id="roleDao" class="com.wei.greenleaflibrary.dao.RoleJpaDao" />
+	<bean id="publisherDao" class="com.wei.greenleaflibrary.dao.PublisherJpaDao" />
+	
+	<!-- Services declarations -->
+	<bean id="userService" class="com.wei.greenleaflibrary.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao" />
+		<property name="roleDao" ref="roleDao" />
+	</bean>
+	
+	<bean id="userAuthenticationProviderService"
+		class="com.wei.greenleaflibrary.service.impl.UserAuthenticationProviderServiceImpl">
+		<property name="authenticationManager" ref="authenticationManager" />
+	</bean>
+	
+	<bean id="bookService" class="com.wei.greenleaflibrary.service.impl.BookServiceImpl">
+		<property name="bookDao" ref="bookDao" />
+		<property name="publisherDao" ref="publisherDao" />
+		<property name="lendingRecordDao" ref="lendingRecordDao" />
+		<property name="ratingDao" ref="ratingDao" />
+	</bean>
+	
+	<bean id="lendingRecordService" 
+		class="com.wei.greenleaflibrary.service.impl.LendingRecordServiceImpl">
+		<property name="lendingRecordDao" ref="lendingRecordDao" />
+	</bean>
+	
+	<bean id="ratingService" class="com.wei.greenleaflibrary.service.impl.RatingServiceImpl">
+		<property name="ratingDao" ref="ratingDao" />
+	</bean>
+	
+	<bean id="InitDatabaseService" class="com.wei.greenleaflibrary.service.impl.InitDatabaseServiceImpl">
+		<property name="userDao" ref="userDao" />
+		<property name="roleDao" ref="roleDao" />
+		<property name="publisherDao" ref="publisherDao" />
+		<property name="bookDao" ref="bookDao" />
+	</bean>
+	
+</beans>

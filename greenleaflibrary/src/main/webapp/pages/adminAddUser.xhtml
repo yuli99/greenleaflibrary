@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"  template="templates/template.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="Library Add User" />
+	</ui:define>
+
+	<ui:define name="buttons">
+		<ui:include src="templates/logoutButton.xhtml" />
+	</ui:define>
+
+	<ui:define name="content">
+		<p:fieldset styleClass="mainfield">
+			<h2>New User Info</h2>
+			<h:form id="newUserForm">
+				<p:fieldset styleClass="infofield">
+					<p:focus />
+					<p:messages id="messages" globalOnly="true" />
+
+					<h:panelGrid id="newUserPanel" styleClass="loginPanel" cellspacing="12" columns="3">
+						<h:outputText value="Username:" />
+						<p:inputText id="userName" value="#{userManage.userName}" required="true" label="Username">
+							<p:ajax event="keyup" update="userNameMsg" global="false" listener="#{userManage.checkUserName}" />
+						</p:inputText>
+						<p:message id="userNameMsg" for="userName" />
+
+						<h:outputText value="Password:" />
+						<p:password id="pass1" value="#{userManage.password}" required="true" label="Password" 
+							feedback="true" match="pass2">
+							<f:validateLength minimum="3" />
+						</p:password>
+						<p:message id="pass1Msg" for="pass1" />
+
+						<h:outputText value="Repeat Password:" />
+						<p:password id="pass2" label="Password" required="true" />
+						<p:message id="pass2Msg" for="pass2" />
+						
+						<h:outputText value="Card Number:" />
+						<p:inputText id="cardNum" value="#{userManage.cardNumber}" required="true" label="Card Number">
+							<p:ajax event="keyup" update="cardNumMsg" global="false" listener="#{userManage.checkCardNumber}" />
+						</p:inputText>
+						<p:message id="cardNumMsg" for="cardNum" />
+
+						<h:outputText value="Full Name:" />
+						<p:inputText id="fullName" label="Full Name" value="#{userManage.fullName}" required="true">
+							<f:validateLength minimum="2" maximum="70" />
+						</p:inputText>
+						<p:message id="fullNameMsg" for="fullName" />
+	
+						<h:outputText value="Date of Birth:" />
+						<h:panelGroup>
+							<p:inputText id="dateOfBirth" label="Date of Birth" value="#{userManage.dateOfBirth}" required="true">
+								<f:convertDateTime pattern="yyyy-MM-dd" />
+							</p:inputText>
+							<p:watermark for="dateOfBirth" value="yyyy-MM-dd" />
+						</h:panelGroup>
+						<p:message id="dateOfBirthMsg" for="dateOfBirth" />
+						
+						<h:outputText value="Email Address:" />
+						<h:panelGroup>
+							<p:inputText id="email" label="Email" value="#{userManage.email}" required="true">
+								<f:validateBean disabled="false" />
+							</p:inputText>
+							<p:watermark for="email" value="example@email.com" />
+						</h:panelGroup>
+						<p:message id="emailMsg" for="email" />
+					
+						<h:outputText value="" />
+						<p:commandButton id="submitButton" update="newUserPanel,messages" action="#{userManage.addUser}"
+							value="Add User" icon="ui-icon-check"  />
+					</h:panelGrid>
+				</p:fieldset>
+			</h:form>
+		</p:fieldset>
+	</ui:define>
+
+	<ui:define name="links">
+		<ui:include src="templates/adminHomeLink.xhtml" />
+	</ui:define>
+</ui:composition>

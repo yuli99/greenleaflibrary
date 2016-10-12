@@ -1,0 +1,103 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"  template="templates/template.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="Library Admin Home" />
+	</ui:define>
+
+	<ui:define name="buttons">
+		<ui:include src="templates/logoutButton.xhtml" />
+	</ui:define>
+	
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{userManage.cleanData}"/>
+			<f:event type="preRenderView" listener="#{bookManage.cleanData}"/>
+			<f:event type="preRenderView" listener="#{lendingManage.cleanData}"/>
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="content">
+		<p:fieldset styleClass="mainfield">
+		<h2>Admin Home</h2>
+		<h:form>
+			<h:panelGrid id="adminPanel" styleClass="adminPanel" cellspacing="16" columns="3">
+				<h:outputText value="User Management" styleClass="adminText" />
+				<h:outputText value="Book Management" styleClass="adminText" />
+				<h:outputText value="Lending Management" styleClass="adminText" />
+				
+				<h:panelGroup>
+					<br />
+					<h:link id="addUser" title="add new user" 
+						outcome="/pages/adminAddUser.xhtml?faces-redirect=true" >
+						<p:graphicImage url="../resources/images/adduser.png" height="30" />
+					</h:link>
+				</h:panelGroup>
+				<h:panelGroup>
+					<br />
+					<h:link id="addBook" title="add new book"
+						outcome="/pages/adminAddBook.xhtml?faces-redirect=true">
+						<h:graphicImage url="../resources/images/addbook.png" height="27" />
+					</h:link>		
+				</h:panelGroup>
+				<h:panelGroup>
+					<br />
+					<h:link id="addRecord" title="add new record for book lending"
+						outcome="/pages/adminAddRecord.xhtml?faces-redirect=true">
+						<h:graphicImage url="../resources/images/addrecord.png" height="30" />
+					</h:link>
+				</h:panelGroup>
+				
+				<h:panelGroup>
+					<br />
+					<h:link id="searchUser" title="update or delete user" 
+						outcome="/pages/adminUserDetail.xhtml?faces-redirect=true" >
+						<p:graphicImage url="../resources/images/searchuser.png" height="31" />
+					</h:link>
+				</h:panelGroup>
+				<h:panelGroup>
+					<br />
+					<h:link id="searchBook" title="update or delete book"
+						outcome="/pages/adminBookDetail.xhtml?faces-redirect=true">
+						<h:graphicImage url="../resources/images/searchbook.png" height="32" />
+					</h:link>		
+				</h:panelGroup>
+				<h:panelGroup>
+					<br />
+					<h:link id="searchRecords" title="update lending record"
+						outcome="/pages/adminRecordDetail.xhtml?faces-redirect=true">
+						<h:graphicImage url="../resources/images/searchrecord.png" height="27" />
+					</h:link>
+				</h:panelGroup>
+				
+				<h:panelGroup>
+					<br />
+					<p:commandLink id="viewUsers" title="view all users" action="#{userManage.loadAll}">
+						<h:graphicImage url="../resources/images/viewusers.png" height="30" />
+					</p:commandLink>
+				</h:panelGroup>
+				<h:panelGroup>
+					<br />
+					<p:commandLink id="viewBooks" title="view all books" action="#{bookManage.loadAll}">
+						<h:graphicImage url="../resources/images/viewbooks.png" height="30" />
+					</p:commandLink>
+				</h:panelGroup>
+				<h:panelGroup>
+					<br />
+					<p:commandLink id="viewRecords" title="view all lending records" action="#{lendingManage.loadAll}">
+						<h:graphicImage url="../resources/images/viewrecords.png" height="30" />
+					</p:commandLink>
+				</h:panelGroup>						
+			</h:panelGrid>
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		</h:form>
+		</p:fieldset>
+	</ui:define>
+
+	<ui:define name="links">
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"  template="templates/template.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="Library User Ratings" />
+	</ui:define>
+
+	<ui:define name="buttons">
+		<ui:include src="templates/logoutButton.xhtml" />
+	</ui:define>
+
+	<ui:define name="content">
+		<p:fieldset styleClass="mainfield">
+			<h2><i>All Rates from #{accountManage.userName}</i></h2>
+			<p:dataTable id="ratings" var="rating" value="#{accountManage.ratings}">
+				<p:column headerText="Barcode" style="width: 120px">
+					<h:outputText value="#{rating.book.barcode}" />
+				</p:column>
+				<p:column headerText="Title / Edition" style="width: 460px">
+					<h:outputText value="#{rating.book.title} / #{rating.book.edition}" />
+				</p:column>
+				<p:column headerText="Score" style="width: 130px">
+					<p:rating value="#{rating.score}" readonly="true" />
+				</p:column>
+				<p:column headerText="Rated Date" style="width: 140px">
+					<h:outputText value="#{rating.rateDate}">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</h:outputText>
+				</p:column>
+			</p:dataTable>
+		</p:fieldset>		
+	</ui:define>
+
+	<ui:define name="links">
+		<p:fieldset id="links" styleClass="linksfield">
+		<h:panelGrid columns="1" cellpadding="4">
+			<h:link value="Back to Account" outcome="userAccount" 
+				style="color:green; font-weight: bold"/>
+		</h:panelGrid> 
+	</p:fieldset>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,81 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"  template="templates/template.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="Green Leaf Library" />
+	</ui:define>
+
+	<ui:define name="buttons">
+		<ui:include src="templates/loginButton.xhtml" />
+	</ui:define>
+
+	<ui:define name="content">
+		<p:fieldset styleClass="mainfield">
+			<h:form id="searchForm">
+				<h:panelGrid style="margin: 10px auto" cellspacing="8" columns="5">
+					<h:outputLabel value="Search the Catalog " style="font-size: 18px; font-weight: bold" />
+					<h:inputText value="#{bookSearch.inputText}" style="font-size: 18px" />
+					<p:commandButton id="keyword" value="Keyword" action="#{bookSearch.byKeyword}" ajax="false" />
+					<p:commandButton id="title" value="Title" action="#{bookSearch.byTitle}" ajax="false" />
+					<p:commandButton id="author" value="Author"	action="#{bookSearch.byAuthor}" ajax="false" />
+				</h:panelGrid>
+			</h:form>
+			<p:layout id="mainLayout" styleClass="mainLayout">
+				<p:layoutUnit position="center">
+					<p:fieldset id="overview" styleClass="overview">
+						<h3>Overview</h3>
+						<h:outputText
+							value="The 22,000 square feet Green Leaf Library is located on 1234 water maple street 
+							in North Tampa. It provides welcoming environments, a broad range of both print and 
+							non-print materials, and highly qualified, customer-focused employees to engender a 
+							lifelong love of reading and learning for our users." />
+						<br />
+						<br />
+						<h3>Services</h3>
+						<h:outputText
+							value="Open six days a week, the library houses a comprehensive circulating collection 
+							in multiple formats and a wide variety of programs and services. In addition to two large 
+							community rooms, five smaller meeting rooms are available for programs, meetings, quiet 
+							study and literacy tutoring. They are available on a first-come, first-serve basis by 
+							signing up at the Circulation Desk." />
+					</p:fieldset>
+				</p:layoutUnit>
+
+				<p:layoutUnit position="east" size="320">
+					<p:fieldset id="eastfield" styleClass="eastfield">
+						<h3>Library Hours</h3>
+						<p:panelGrid cellspacing="4" columns="2">
+							<h:outputText value="Mon: " />
+							<h:outputText value="Closed" />
+							<h:outputText value="Tues - Thur: " />
+							<h:outputText value="10 a.m. - 5:30 p.m." />
+							<h:outputText value="Fri - Sat: " />
+							<h:outputText value="10 a.m. - 7:30 p.m." />
+							<h:outputText value="Sun: " />
+							<h:outputText value="12 p.m. - 4:30 p.m" />
+						</p:panelGrid>
+						<h3>Holidays</h3>
+						<p:panelGrid cellspacing="4" columns="2">
+							<h:outputText value="Jul 4" />
+							<h:outputText value="Independence Day" />
+							<h:outputText value="Sep 5" />
+							<h:outputText value="Labor Day" />
+							<h:outputText value="Dec 25" />
+							<h:outputText value="Christmas Day" />
+						</p:panelGrid>
+					</p:fieldset>
+				</p:layoutUnit>
+			</p:layout>
+		</p:fieldset>
+	</ui:define>
+
+	<ui:define name="links">
+		<ui:include src="templates/footerLinks.xhtml" />
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,25 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<p:fieldset id="topfield" styleClass="topfield">
+		<h:outputText value="Welcome to green leaf library!" />
+	</p:fieldset>
+	
+	<p:fieldset id="logofield" styleClass="logofield">
+		<p:layout id="logoLayout" styleClass="logoLayout">
+			<p:layoutUnit position="center">
+				<h:panelGrid columns="1" cellpadding="4">
+					<p:graphicImage url="../resources/images/greenleaf.png" height="80" />
+					<h:outputLabel value="#{applicationInfo.slogan}"  styleClass="sloganText"/>		
+				</h:panelGrid>
+			</p:layoutUnit>
+
+			<p:layoutUnit position="east"  size="260">
+				<ui:insert name="buttons" />
+			</p:layoutUnit>
+		</p:layout>
+	</p:fieldset>
+</ui:composition>

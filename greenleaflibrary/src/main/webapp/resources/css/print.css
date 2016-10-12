@@ -1,0 +1,67 @@
+#header {
+	display:none;
+}
+
+#content {
+	position:relative;
+	padding:5px;
+	top: 5px;
+	margin-left: 5px;
+	margin-bottom:5px;
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: normal; 
+    font-style: normal; 
+	font-smooth: always;
+	border: 0;
+}
+
+#footer {
+	display:none;
+}
+
+.mainfield {
+	width: 100%;
+	margin: 2px auto;
+	border: 0;
+}
+
+.overview {
+	width: 91%;
+	margin: 20px 20px;
+	text-align:left;
+	border: 0;
+}
+
+.mainLayout {
+	width: 98%;
+	height: 340px; 
+	margin: 10px auto 10px;
+	border: 0; 
+}
+
+.ui-layout-unit {
+	border: 0;
+	background: none;
+}
+
+.ui-layout-unit-content {
+	border: 0;
+	background: none;
+}
+
+
+.eastfield {
+	display:none;
+}
+
+.south {
+	display:none;
+}
+
+.about {
+	width: 90%;
+	margin: 20px auto;
+	text-align: left;
+	border: 0;
+}

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"  template="templates/template.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="Library User Home" />
+	</ui:define>
+
+	<ui:define name="buttons">
+		<ui:include src="templates/logoutButton.xhtml" />
+	</ui:define>
+	
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{accountManage.loadLendingRecords}"/>
+			<f:event type="preRenderView" listener="#{accountManage.loadBookBarcodes}"/>
+		</f:metadata>
+	</ui:define>
+	
+	<ui:define name="content">
+		<p:fieldset styleClass="mainfield">
+			<h2><i>Lending records for #{accountManage.userName}</i></h2>
+			<p:dataTable id="lendingRec" var="record" value="#{accountManage.records}">
+				<p:column headerText="Barcode" style="width: 120px">
+					<h:outputText value="#{record.book.barcode}" />
+				</p:column>
+				<p:column headerText="Title / Edition" style="width: 440px">
+					<h:outputText value="#{record.book.title} / #{record.book.edition}" />
+				</p:column>
+				<p:column headerText="Issure Date" style="width: 120px">
+					<h:outputText value="#{record.issueDate}">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Return Date" style="width: 120px">
+					<h:outputText value="#{record.returnDate}">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</h:outputText>
+				</p:column>
+			</p:dataTable>
+		</p:fieldset>
+		<br />
+		<br />
+
+		<h:form id="bookRatingForm">
+			<p:messages id="messages" globalOnly="true" />
+			<h:panelGrid id="bookRatingPanel" style="margin: 10px auto" cellspacing="12" columns="3">
+				<h:outputText value="Choose a book: " />
+				<p:selectOneMenu id="barcode" value="#{accountManage.barcode}">
+	            	<f:selectItem itemLabel="Select barcode" itemValue="" />
+	           		<f:selectItems value="#{accountManage.barcodes}" />
+	        	</p:selectOneMenu>
+	        	<p:commandButton id="viewRatings" value="View all Ratings" action="#{accountManage.loadRatings}" />	
+				<h:outputText value="Rate the book:" />
+				<p:rating value="#{accountManage.score}" />			
+				<p:commandButton id="submit" value="Submit Rating" update="bookRatingPanel,messages"
+					action="#{accountManage.rateBook}" />				
+			</h:panelGrid>
+		</h:form>			
+	</ui:define>
+
+	<ui:define name="links">
+	</ui:define>
+</ui:composition>

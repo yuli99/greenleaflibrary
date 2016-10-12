@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"  template="templates/template.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="Library Book Lending" />
+	</ui:define>
+
+	<ui:define name="buttons">
+		<ui:include src="templates/logoutButton.xhtml" />
+	</ui:define>
+
+	<ui:define name="content">
+		<p:fieldset styleClass="mainfield">
+			<h2>Book Lending Info</h2>
+			<h:form id="newRecordForm">
+				<p:fieldset styleClass="infofield">
+					<p:focus />
+					<p:messages id="messages" globalOnly="true" />
+
+					<h:panelGrid id="newRecordPanel" styleClass="loginPanel" cellspacing="12" columns="2">
+						<h:outputText value="Card Number:" />
+						<p:autoComplete id="cardNum" minQueryLength="3" value="#{lendingManage.cardNumber}" 
+							completeMethod="#{lendingManage.completeCardNumber}" effect="fade" />
+												
+						<h:outputText value="Book Barcode:" />
+						<p:autoComplete id="barcode" minQueryLength="3" value="#{lendingManage.barcode}" 
+							completeMethod="#{lendingManage.completeBarcode}" effect="fade" />
+	
+						<h:outputText value="" />
+						<p:commandButton id="submit" update="newRecordPanel,messages" action="#{lendingManage.addRecord}"
+							value="Add Lending Record" icon="ui-icon-check"  />
+					</h:panelGrid>
+				</p:fieldset>
+			</h:form>
+		</p:fieldset>
+	</ui:define>
+	
+	<ui:define name="links">
+		<ui:include src="templates/adminHomeLink.xhtml" />
+	</ui:define>
+</ui:composition>

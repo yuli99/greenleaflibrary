@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"  template="templates/template.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="Library Book Update or Delete" />
+	</ui:define>
+
+	<ui:define name="buttons">
+		<ui:include src="templates/logoutButton.xhtml" />
+	</ui:define>
+	
+	<ui:define name="content">
+		<p:fieldset styleClass="mainfield">
+			<h:form id="searchBookForm">
+				<p:focus />
+				<h:panelGrid style="margin: 10px auto" cellspacing="8" columns="4">
+					<h:outputLabel for="barcode" value="Enter book barcode:" />
+					<p:autoComplete id="barcode" minQueryLength="3" value="#{bookManage.barcode}" 
+						completeMethod="#{bookManage.completeBarcode}" effect="fade" />					
+					<p:commandButton id="search" value="Search" action="#{bookManage.loadBook}" ajax="false" />
+				</h:panelGrid>
+			</h:form>
+			<h:form id="bookDetailForm">
+				<p:fieldset styleClass="infofield">
+					<p:messages id="messages" globalOnly="true" />
+	
+					<h:panelGrid id="bookInfoPanel" styleClass="loginPanel" cellspacing="12" columns="3">
+						<h:outputText value="Barcode:" />
+						<h:outputText value="#{bookManage.book.barcode}" />
+						<h:outputText value="" />
+							
+						<h:outputText value="Title:" />
+						<p:inplace>
+							<p:inputText id="title" label="Title"
+								value="#{bookManage.book.title}" required="true" style="width:140px">
+								<f:validateLength minimum="3" maximum="100" />
+							</p:inputText>
+						</p:inplace>
+						<p:message id="titleMsg" for="title" />
+	
+						<h:outputText value="Edition:" />
+						<p:inplace>
+							<p:inputText id="edition" label="Edition"
+								value="#{bookManage.book.edition}" required="true" style="width:140px">
+								<f:validateLength maximum="20" />
+							</p:inputText>
+						</p:inplace>
+						<p:message id="editionMsg" for="edition" />
+						
+						<h:outputText value="Authors:" />
+						<p:inplace>
+							<p:inputText id="authors" label="Authors"
+								value="#{bookManage.book.authors}" required="true" style="width:140px">
+								<f:validateLength minimum="2" />
+							</p:inputText>
+						</p:inplace>
+						<p:message id="authorsMsg" for="authors" />
+						
+						<h:outputText value="Publisher:" />
+						<h:outputText value="#{bookManage.book.publisher.publisherName}" />
+						<h:outputText value="" />
+						
+						<h:outputText value="Cover Image:" />
+						<h:outputText value="#{bookManage.book.imageUri}" />
+						<h:outputText value="" />
+						
+						<p:commandButton id="update" action="#{bookManage.editBook}"
+							update="bookInfoPanel,messages" icon="ui-icon-pencil" value="Update" />
+						<p:commandButton id="delete" action="#{bookManage.deleteBook}"
+							update="bookInfoPanel,messages" icon="ui-icon-close" value="Delete" />
+					</h:panelGrid>
+				</p:fieldset>
+			</h:form>			
+		</p:fieldset>
+	</ui:define>
+
+	<ui:define name="links">
+		<ui:include src="templates/adminHomeLink.xhtml" />
+	</ui:define>
+</ui:composition>

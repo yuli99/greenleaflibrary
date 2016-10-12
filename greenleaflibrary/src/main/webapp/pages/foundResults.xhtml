@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"  template="templates/template.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="Book Search Results" />
+	</ui:define>
+
+	<ui:define name="buttons">
+		<ui:include src="templates/loginButton.xhtml" />
+	</ui:define>
+
+	<ui:define name="content">
+		<p:fieldset styleClass="mainfield">
+			<h:form id="searchForm">
+				<h:panelGrid style="margin: 10px auto" cellspacing="8" columns="5">
+					<h:outputLabel value="Search the Catalog " style="font-size: 18px; font-weight: bold" />
+					<h:inputText value="#{bookSearch.inputText}" style="font-size: 18px" />
+					<p:commandButton id="keyword" value="Keyword" action="#{bookSearch.byKeyword}" ajax="false" />
+					<p:commandButton id="title" value="Title" action="#{bookSearch.byTitle}" ajax="false"/>
+					<p:commandButton id="author" value="Author" action="#{bookSearch.byAuthor}" ajax="false" />
+				</h:panelGrid>
+			</h:form>
+			<br />
+			<h2 style="color: green">
+				<i>Total #{bookSearch.numberOfResults} book(s) found for input text "#{bookSearch.inputText}"</i>
+			</h2>	
+			<h:form id="bookForm">	
+				<p:dataTable value="#{bookSearch.books}" var="book" >
+					<p:column headerText="ISBN">
+			            <h:outputText value="#{book.barcode}" />
+			        </p:column>
+			        <p:column headerText="Title / edition" style="width:470px">
+           				<h:outputText value="#{book.title} / #{book.edition}"/>
+	       			</p:column>
+	       			<p:column headerText="Authors" style="width:210">
+	       				<h:outputText value="#{book.authors}" style="font-style: italic" />
+	     			</p:column>
+	       			<p:column style="width:40px;text-align: center">
+	       				<p:commandButton update=":bookForm:bookDetail" oncomplete="PF('bookDialog').show()" title="View Detail" icon="ui-icon-search">
+	          				<f:setPropertyActionListener value="#{book}" target="#{bookSearch.selectedBook}" />      
+	            		</p:commandButton>
+	            	</p:column>
+	    		</p:dataTable>	
+							
+				<p:dialog header="Book Detail" widgetVar="bookDialog" modal="true" showEffect="fade" 
+					hideEffect="fade" width="600">						
+	       			<p:outputPanel id="bookDetail" style="text-align: left">			
+		       			<p:panelGrid style="margin-top:10px auto 10px">
+		       				<p:row>
+		       					<p:column rowspan="7">
+		       						<h:graphicImage url="../resources/bookcovers/#{bookSearch.selectedBook.imageUri}"/> 
+		       					</p:column>
+		       					<p:column>
+		       						<h:outputText value="barcode:" />
+		       					</p:column>
+		       					<p:column>
+		       						<h:outputText value="#{bookSearch.selectedBook.barcode}" 
+		       							style="font-weight: bold"/>
+		       					</p:column>
+		       				</p:row>
+		       				<p:row>
+		       					<p:column>
+		       						<h:outputText value="Title:" />
+		       					</p:column>
+		       					<p:column>
+		       						<h:outputText value="#{bookSearch.selectedBook.title}" />
+		       					</p:column>
+		       				</p:row>
+		       				<p:row>
+		       					<p:column>
+		       						<h:outputText value="Authors:" />
+		       					</p:column>
+		       					<p:column>
+		       						<h:outputText value="#{bookSearch.selectedBook.authors}" style="font-style: italic"/>
+		       					</p:column>
+		       				</p:row>
+		       				<p:row>
+		       					<p:column>
+		       						<h:outputText value="Edition:" />
+		       					</p:column>
+		       					<p:column>
+		       						<h:outputText value="#{bookSearch.selectedBook.edition}" />
+		       					</p:column>
+		       				</p:row>		
+		       				<p:row>
+		       					<p:column>
+		       						<h:outputText value="Publisher:" />
+		       					</p:column>
+		       					<p:column>
+		       						<h:outputText value="#{bookSearch.selectedBook.publisher}" style="font-style: italic" />
+		       					</p:column>
+		       				</p:row>       				
+		       				<p:row>
+		       					<p:column>
+		       						<h:outputText value="Status:" />
+		       					</p:column>
+		       					<p:column>
+		       						<h:outputText value="#{bookSearch.selectedBook.currentStatus}" 
+		       							style="font-weight: bold" />
+		       					</p:column>
+		       				</p:row>       				
+		       				<p:row>
+		       					<p:column>
+		       						<h:outputText value="Rating:" />
+		       					</p:column>
+		       					<p:column>
+		       						<h:outputText value="#{bookSearch.selectedBook.ratingScore}/5.0 
+		       							from #{bookSearch.selectedBook.ratingTimes} reader(s)" 
+		       							style="font-weight: bold; font-style: italic"/>
+		       					</p:column>
+		       				</p:row>   					       					       				
+		       				<p:row>
+		       					<p:column colspan="3">
+		       						<h:outputText value="Description:" />
+		       						<br />
+		       						<h:outputText value="#{bookSearch.selectedBook.description}" 
+		       							style="font-style: italic; font-size: 12px"/>
+		       					</p:column>
+		       				</p:row>       			
+		       			</p:panelGrid>
+	       			</p:outputPanel>
+	    		</p:dialog>
+    	 	</h:form>		
+		</p:fieldset>
+	</ui:define>
+
+	<ui:define name="links">
+		<ui:include src="templates/footerLinks.xhtml" />
+	</ui:define>
+
+</ui:composition>
+
